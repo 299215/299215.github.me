@@ -1,39 +1,410 @@
 <!DOCTYPE html>
-<html align="center" style="font-family: system-ui, -apple-system, arial, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;cursor:default;color: #fff;background-color: #000;font-feature-settings: 'tnum';" >
-<head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" charset="utf-8">
-<title>组织管理条例</title>
-<script>
-  setcookie('param_cookie',0,10);
-</script>
-<script>
-  function body_onload()
-{
-    if(0 == getcookie('param_cookie')){
-        setcookie("param_cookie",1,10);
-        window.location.reload(true); 
-    }
-}
-</script>
-</head>
-<body onLoad="body_onload()">
-<center><br><span style="font-size: 36px;text-shadow: 0 0 9px #2f0;">组织管理条例</span>
-<br><br><span style="font-size: 20px;">发布者：<b>Pixel</b></span>
-<br><span style="font-size: 20px;">修订于 2024/1/20 21:22</span>
-<hr><div align="left"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条 S战队是以游戏活动为主要任务的综合性交友组织，游戏主要包括狼人杀和王者荣耀。P式娱乐房公会(ID:299215)是S战队在狼人杀中的唯一执政公会，禁止任何组织和个人破坏P式娱乐房公会在战队的主导地位。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条 S战队内部事务的一切决定权力归属于组织内部成员，不接受一切外部势力干涉。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条 本组织绝对严禁社会闲散人员、砸鸡蛋公会成员、黑恶产业组织、以及其他一切可以对个人隐私实施侵犯的道德败坏人员进入。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四条 本组织公会内、群聊内禁止以任何形式宣传搏击房。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第五条 禁止以任何形式对组织成员进行侮辱谩骂，禁止在本组织公会内、群聊内发送与其他组织成员的王者单挑战绩截图。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第六条 禁止任何组织和个人向S战队任何成员无理由收取财物。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第七条 本组织各成员一律地位平等。组织维护和发展各成员的平等团结互助和谐关系。禁止对任何成员进行歧视和压迫，禁止破坏成员团结和制造组织分裂的行为。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第八条 本组织成员的各社交平台账号不受侵犯。禁止用任何方法对成员进行侮辱、诽谤和诬告陷害。禁止非法搜查成员个人信息。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第九条 本组织成员有对会长提出批评和建议的权利，对于任何会长的失职行为，有向会长提出要求道歉的权利，但是不得捏造或者歪曲事实进行诬告陷害。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十条 本组织成员有权向会长提出罢免副会长的请求。需提供能够证明其不称职的证据。
-<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第十一条 战队王者内战统一使用5V5王者峡谷4ban位征召模式。
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>P式娱乐房 - 进阶模式第一娱乐房组织</title>
 
-</div>
-<br>
-<hr>
-<span style="color: #ff1;">S战队©</span><br><br><br></center>
-</body></html>
+    <style>
+        html{
+            user-select: none; /* 禁用选择 */
+            -moz-user-select: none; /* Firefox */
+            -webkit-user-select: none; /* Safari 和 Chrome */
+            -ms-user-select: none; /* Internet Explorer 和 Edge */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f7f7;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 33px;
+            cursor: default;
+
+        }     
+           .timer{
+            width: 200px;
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 33px;
+            cursor: default;
+
+        }
+
+
+
+        .fullscreen-div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 1);
+            color: white;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+            padding: 0px;
+            z-index: 8;
+        }
+
+        .close-btn {
+            position: fixed;z-index: 10;
+            top: 20px;
+            left: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: default;font-size: 23px;
+        }
+        #copyButton {
+            background-color: rgb(0, 89, 255);
+            color: white;
+            padding: 10px 43px;font-size: 22px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .bcontainer {
+            width: 130px;font-size: 22px;line-height: 29px;
+            display: inline-block;
+            align-items: center;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .bavatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 15px;
+        }
+        .binfo {
+            display: flex;
+            flex-direction: column;
+        }
+        .blevel {
+            display: flex;
+            align-items: center;
+        }
+        .bpill {
+            width: 12px; /* 调整药丸的宽度 */
+            height: 12px; /* 调整药丸的高度 */
+            border-radius: 6px; /* 调整药丸的圆角 */
+            margin-right: 5px;
+        }
+        .bK1 {
+            background-color: gold;
+        }
+        .bK2 {
+            background-color: green;
+        }
+        .bK3 {
+            background-color: deepskyblue;
+        }
+        /* 使文本颜色可见 */
+        .binfo span {
+            color: #333; /* 字体颜色 */
+            font-weight: bold; /* 字体加粗 */
+        }
+        #shan{animation-name: shans;animation-duration: 1.5s;animation-iteration-count: infinite;}
+        @keyframes shans {
+            0%{opacity: 1;}
+            50%{opacity: 0.5;}
+            100%{opacity: 1;}
+        }
+    </style>
+        <script>
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault(); // 禁用右键菜单
+            });
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class="box" style="background-color: #FF5733;margin-top: 46px;" onclick="showDiv('gameRules')">房规53.0</div>
+        
+        <div style="background-color: #3357FF;font-size: 59px;" class="timer"></div>
+        <div class="box" style="background-color: #0da329;" id="shan">班次进行中</div>
+        <script>  
+            function pad(number) {  
+                return number < 10 ? '0' + number : number;  
+            }  
+      
+            function updateTime() {  
+                const now = new Date();  
+                const hours = pad(now.getHours());  
+                const minutes = pad(now.getMinutes());  
+                const formattedTime = `${hours}:${minutes}`;  
+                document.querySelector('.timer').textContent = formattedTime;  
+            }  
+      
+            // 初始化时间显示  
+            updateTime();  
+            // 每秒更新一次时间  
+            setInterval(updateTime, 1000);  
+        </script>  
+        <script>  
+            function updateDisplay() {  
+                const div = document.getElementById('shan');  
+                const now = new Date();  
+                const hours = now.getHours();  
+                const minutes = now.getMinutes();  
+      
+                const startTime = new Date();  
+                startTime.setHours(20, 15, 0, 0); // 设置开始时间为 20:15:00  
+      
+                const endTime = new Date();  
+                endTime.setHours(21, 50, 0, 0); // 设置结束时间为 21:50:00  
+      
+                if (now >= startTime && now <= endTime) {  
+                    div.style.display = 'flex'; // 在指定时间范围内显示  
+                } else {  
+                    div.style.display = 'none'; // 在指定时间范围外隐藏  
+                }  
+            }  
+      
+            // 初始调用  
+            updateDisplay();  
+      
+            // 每分钟调用一次以更新显示状态  
+            setInterval(updateDisplay, 3000);  
+        </script>  
+        <!--<div class="box" style="background-color: #0da329;" onclick="showDiv('management')">管理层</div>
+        <div class="box" style="background-color: #3357FF;" onclick="showDiv('newcomerGuide')">新人指南</div>
+        <div class="box" style="background-color: #FF33A6;" onclick="showDiv('werewolfGuide')">公会规章</div>-->
+    </div>
+
+    <div id="gameRules" class="fullscreen-div" style="justify-content: center;">
+        <button class="close-btn" onclick="hideDiv()">返回</button>
+        <h1>游戏房规</h1>
+        <p style="text-align: left;padding: 30px;" id="fuzhi">P式•守卫白狼王💎53.0<br>
+            ⑴禁止贴脸骂人<br>
+            ⑵禁止警下预/怂预(吞警徽除外)<br>
+            ⑶禁止夜间送礼<br>
+            ⑷禁止仇杀仇毒<br>
+            ⑸禁止恶意黑麦<br>
+            ⑹禁止场外信息<br>
+            ⑺无翻枪，无底牌压制<br>
+            ⑻无点杀，违规直接判交牌<br>
+            ⑼ 2024年11月1日铭记皮鞋违规</p>
+            <button id="copyButton">复制</button>
+           
+
+            <script>
+                document.getElementById("copyButton").onclick = function() {
+                    const textToCopy = document.getElementById("fuzhi").innerText; // 获取<p>内的文本内容
+                    navigator.clipboard.writeText(textToCopy) // 使用Clipboard API复制文本
+                        .then(() => {
+                            alert("复制房规成功"); // 复制成功提示
+                            
+                        })
+                        .catch(err => {
+                            console.error("复制房规失败"); // 复制失败提示
+                        });
+                }
+            </script>
+    </div>
+
+<!--
+    <div id="management" class="fullscreen-div" style="overflow: scroll;">
+        <button class="close-btn" onclick="hideDiv()">返回</button>
+        <h1>管理层</h1>
+        <div class="bcontainer">
+            <div class="binfo">
+                <span>Pixel</span>
+                <div class="blevel">
+                    <div class="bpill bK1"></div>
+                    <span>K1·大元帅</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="bcontainer">
+            
+            <div class="binfo">
+                <span>lucky.</span>
+                <div class="blevel">
+                    <div class="bpill bK2"></div>
+                    <span>K2·元帅</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="bcontainer">
+            
+            <div class="binfo">
+                <span>黎星辰</span>
+                <div class="blevel">
+                    <div class="bpill bK2"></div>
+                    <span>K2·元帅</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bcontainer">
+            
+            <div class="binfo">
+                <span>QFG.run</span>
+                <div class="blevel">
+                    <div class="bpill bK3"></div>
+                    <span>K3·准帅</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bcontainer">
+            
+            <div class="binfo">
+                <span>雨林</span>
+                <div class="blevel">
+                    <div class="bpill bK3"></div>
+                    <span>K3·准帅</span>
+                </div>
+            </div>
+        </div>
+        <div class="bcontainer">
+        <div class="binfo">
+            <span>78</span>
+            <div class="blevel">
+                <div class="bpill bK3"></div>
+                <span>K3·准帅</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bcontainer">
+        
+        <div class="binfo">
+            <span>有可能</span>
+            <div class="blevel">
+                <div class="bpill bK3"></div>
+                <span>K3·准帅</span>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div id="newcomerGuide" class="fullscreen-div" style="overflow: scroll;">
+        <button class="close-btn" onclick="hideDiv()">返回</button>
+        <h1>新人指南</h1>
+        <p style="padding: 30px;text-align: left;">P式娱乐房作为进阶模式第一娱乐房组织，已成为众多玩家交流、合作和分享经验的理想场所。加入这个新公会，不仅是一次新的社交体验，更是对自己游戏态度的挑战。为了帮助新成员更好地融入这个大家庭，特意整理了以下新人指南，希望能为大家提供一些有用的参考。<br><br>
+
+            首先，遵守文明原则每位新成员的基本义务。这不仅是对公会管理团队辛勤维护的尊重，也是对自己参与体验的保障。在公会中，文明交流尤为重要，保持言辞的礼貌和尊重，避免争吵和人身攻击，能营造出和谐的氛围，让每个玩家都能愉快地交流和游戏。<br><br>
+            
+            其次，服从管理是确保公会秩序的关键。公会管理团队为了维护公会的正常运转，常常需要制定一些管理措施。因此，尊重他们的管理决定，听从他们的指引，不仅能够让大家的交流更加顺畅，也能帮助新成员更快地融入公会。如果在公会内遇到任何疑问或困难，管理团队是你最好的帮助对象，他们会非常乐意解答你的问题。<br><br>
+            
+            信息分享是P式娱乐房的核心功能之一。在这个公会中，大家可以分享游戏经验、攻略和有趣的游戏瞬间。然而，在分享信息时，我们必须遵循一定的原则。首先，未经允许，禁止在公会内发布广告或推广其他游戏信息，这是为了避免影响公会的正常交流秩序。其次，确保讨论的内容与公会的主题相关，保持信息的连贯性和针对性，这样能够提升大家的参与感和互动性。<br><br>
+            
+            活跃参与是提升公会质量的有效途径。新成员可以积极发言，分享自己的见解和游戏经验，这不仅能够丰富公会的讨论内容，也能让其他成员更加了解你。同时，关注公会的活动安排，积极参与公会活动，将有助于增进与其他成员的交流，建立更深的联系。<br><br>
+            
+            在信息共享的同时，隐私保护也显得尤为重要。每位成员都应当保护好自己的个人信息，避免在公会内随意透露敏感信息。同时，尊重他人的隐私权，在讨论中注意不要侵犯其他成员的个人空间，这是建立良好社交关系的重要一环。<br><br>
+            
+            对于违规行为，公会管理团队有责任进行处理。对于违反公会规章的成员，管理团队可以给予警告或禁言处理，而情节严重者甚至可能会被移出公会。因此，每位新成员都应引以为戒，时刻注意自己的言行举止，维护良好的公会秩序。<br><br>
+            
+            最后，公会的每位成员都是这个大家庭的一部分，大家的反馈和建议对于公会的发展至关重要。如果你有任何意见或建议，请随时向管理团队反馈。我们希望通过每个人的共同努力，能够让这个公会变得更加友好、有趣和高效。<br><br>
+            
+            总之，加入P式娱乐房不仅是一种新的社交体验，更是一种责任与义务。希望每位新成员能够通过遵守规章、服从管理、积极参与和保护隐私，创造出一个和谐、愉快的交流环境。期待在这个公会中与你们的精彩互动！</p>
+    </div>
+
+    <div id="werewolfGuide" class="fullscreen-div" style="overflow: scroll;">
+        <button class="close-btn" onclick="hideDiv()">返回</button>
+        <h1>公会规章</h1>
+        <p style="padding: 30px;text-align: left;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条 本管理条例仅适用于对群聊内发布违规信息的成员进行处罚，不会涉及到没有发布违规信息的成员。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二条 本群内部事务不受外部势力干涉。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三条 本组织绝对严禁社会闲散人员、砸鸡蛋公会成员、黑恶产业组织、以及其他一切可以对个人隐私实施侵犯的道德败坏人员进入。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第四条 本组织公会内、群聊内禁止以任何形式宣传搏击房。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-shadow: 0 0 6px #fa1;">第五条 禁止以任何形式对组织成员进行侮辱谩骂，禁止在未经当事人允许下向本组织公会内、群聊内发送王者单挑战绩截图。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第六条 禁止任何组织和个人向本群成员无理由收取财物。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第七条 本群各成员一律地位平等。组织维护和发展各成员的平等团结互助和谐关系。禁止对任何成员进行歧视和压迫，禁止破坏成员团结和制造组织分裂的行为。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第八条 本群成员的各社交平台账号不受侵犯。禁止用任何方法对成员进行侮辱、诽谤和诬告陷害。禁止非法搜查成员个人信息。</span>
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-shadow: 0 0 6px #f2f;">第九条 处罚规则<br>
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辱骂他人者，当天第一次禁言10分钟处理，当天第二次及以上禁言1小时处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;带入大量外来人员对成员进行伤害者，第一次给予禁言3天并踢除所有外来人员，第二次给予禁言15天并踢除所有外来人员，第三次将被永久踢出处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群聊内揭露他人隐私、发送有耻于他人的信息（包括但不限于王者单挑战绩等），禁言10分钟并撤回其信息处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;破坏成员关系者，禁言24小时处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;侵犯他人隐私，使用“开户”等手段对他人家庭造成伤害者、索要他人财物者，将永久踢出甚至报案处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群聊内刷屏者视情况对其进行10分钟以上，5天以下禁言处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群聊内吵架者管理应进行劝架或劝其转移阵地处理，如仍旧拒绝者，视情况对其进行12小时以上，30天以下禁言处理。
+              <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群聊内发布违法信息者，撤回并禁言30天处理，情节严重的将被永久踢出甚至报案处理。</span></p>
+    </div>
+-->
+    <script>
+        function showDiv(id) {
+            const divs = document.querySelectorAll('.fullscreen-div');
+            divs.forEach(div => {
+                div.style.display = 'none'; // 隐藏所有内容
+            });
+            document.getElementById(id).style.display = 'flex'; // 显示选中的内容
+        }
+
+        function hideDiv() {
+            const divs = document.querySelectorAll('.fullscreen-div');
+            divs.forEach(div => {
+                div.style.display = 'none'; // 隐藏所有内容
+            });
+        }
+    </script>
+
+
+
+    <script>
+        // 计算从2022年7月2日到今天的天数
+        function calculateDays() {
+            const startDate = new Date('2022/07/01');
+            const currentDate = new Date();
+            const timeDifference = currentDate - startDate;
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            return days;
+        }
+
+        // 更新页面内容
+        function updateDays() {
+            const days = calculateDays();
+            const daysElement = document.getElementById('days');
+            daysElement.innerText = `我们已经成立了${days}天`;
+        }
+
+        // 页面加载时自动更新
+        window.onload = updateDays;
+    </script>
+    <div style="position: fixed; bottom: 68px; left: 50%; transform: translateX(-50%); z-index: 7; background-color: rgb(0, 30, 129); color: rgb(255, 241, 249); padding: 5px 15px; margin: 0; line-height: 1.5; white-space: nowrap; font-size: 19px;border-radius: 11px;">
+    进阶模式第一娱乐房组织</div>
+
+    <div id="days" style="position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 7; background-color: rgb(129, 0, 39); color: rgb(255, 241, 249); padding: 5px 15px; margin: 0; line-height: 1.5; white-space: nowrap; font-size: 19px;border-radius: 11px;">
+    </div>
+</body>
+</html>
